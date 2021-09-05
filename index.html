@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electron</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="">
+      <div class="row p-4">
+        <div class="col-md-3 col-xl-3">
+          <div class="custom-file w-50">
+            <input type="file" class="custom-file-input" id="myFile">
+            <label class="custom-file-label" for="myFile">Input file</label>
+          </div>
+
+          <button type="button" class="btn btn-focus px-5 analyze-btn">
+            Analyze
+          </button>
+        </div>
+
+        <div class="col-md-9 col-xl-9">
+          <div class="input-group input-endorment">
+            <input type="text" class="form-control border-radius-none">
+            <div class="input-group-prepend input-group-append">
+              <span class="input-group-text" id="">+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <dis class="row">
+        <div class="col-md-3 col-xl-3">
+          <div class="mt-5 custom-file w-80">
+            <select class="selectpicker" multiple data-live-search="true">
+              <option value="1">No Vague Words</option>
+              <option>No escapes</option>
+              <option>No Slashes</option>
+              <option>No pronouns</option>
+              <option>No unachievable</option>
+              <option>No Negatives</option>
+              <option>No Abbreviations</option>
+              <option>No extra words</option>
+              <option>No combinators</option>
+              <option>Supporting ReferencesNo Parenthesis</option>
+              <option>Proper Universal</option>
+              <option>Non-Specific Temporal Words</option>
+              <option>Imperatives</option>
+              <option>Justification</option>
+              <option>Immeasurable Quantifications</option>
+              <option>Define Acronyms</option>
+              <option>Consistent Terms</option>
+              <option>Appropriate Units</option>
+              <option>Glossary Items</option>
+              <option>Grammar</option>
+              <option>Punctuation</option>
+              <option>Similarity</option>
+              <option>Uniqueness</option>
+              <option>Defined Conventions</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-9 col-xl-9">
+          <div class="row right-container">
+            <div class="col-md-4 col-xl-4">
+              <div class="source-height">
+                Souce Requirments
+              </div>
+            </div>
+            <div class="col-md-4 col-xl-4">
+              <div class="source-height">
+                Suggetions Requirments
+              </div>
+            </div>
+            <div class="col-md-4 col-xl-4">
+              <div class="source-height">
+                Requirments corrected
+              </div>
+            </div>
+          </div>
+        </div>
+      </dis>
+
+      <div class="row">
+        <div class="col-md-3 col-xl-3">
+          <p>
+            <input type="button" 
+                onclick="populateSelect()" 
+                    value="Click to Populate SELECT with JSON" />
+          </p>
+      
+          <!--The SELECT element.-->
+          <select id="sel" onchange="show(this)">
+              <option value="">-- Select --</option>
+          </select>
+      
+          <p id="msg"></p>
+        </div>
+        <div class="col-md-9 col-xl-9">
+          <button type="button" class="btn btn-block mt-4 search-btn btn-focus">Search Results</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <form class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mt-5 custom-file w-75">
+          <input type="file" class="custom-file-input" id="myFile">
+          <label class="custom-file-label" for="myFile">Input file</label>
+        </div>
+        <div class="mt-5 custom-file w-80">
+          <select class="selectpicker" multiple data-live-search="true">
+            <option>No Vague Words</option>
+            <option>No escapes</option>
+            <option>No Slashes</option>
+            <option>No pronouns</option>
+            <option>No unachievable</option>
+            <option>No Negatives</option>
+            <option>No Abbreviations</option>
+            <option>No extra words</option>
+            <option>No combinators</option>
+            <option>Supporting ReferencesNo Parenthesis</option>
+            <option>Proper Universal</option>
+            <option>Non-Specific Temporal Words</option>
+            <option>Imperatives</option>
+            <option>Justification</option>
+            <option>Immeasurable Quantifications</option>
+            <option>Define Acronyms</option>
+            <option>Consistent Terms</option>
+            <option>Appropriate Units</option>
+            <option>Glossary Items</option>
+            <option>Grammar</option>
+            <option>Punctuation</option>
+            <option>Similarity</option>
+            <option>Uniqueness</option>
+            <option>Defined Conventions</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="mt-5 form-group w-75">
+          <div class="input-group mb-5">
+            <input type="text" class="form-control" placeholder="text">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="button">sumanth</button>
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <textarea class="form-control text-center " id="output" placeholder="Requirments" rows="14"></textarea>
+          </div>
+          <br>
+          <button type="button" class="btn btn-primary btn-block">Search Results</button>
+        </div>
+      </div>
+    </div>
+  </form> -->
+
+  <script src="renderer.js">
+      function populateSelect() {
+        // THE JSON ARRAY.
+        // var birds = [
+        //     {"ID": "001", "Bird_Name": "Eurasian Collared-Dove"},
+        //     {"ID": "002", "Bird_Name": "Bald Eagle"},
+        //     {"ID": "003", "Bird_Name": "Cooper's Hawk"},
+        // ];
+
+        var MongoClient = require('mongodb').MongoClient;
+        var url = "mongodb+srv://ndm_75:nadeem123@cluster0.p64ig.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+        MongoClient.connect(url, function(err, db) {
+          if (err) throw err;
+          var dbo = db.db("node_test");
+          var myobj = [
+            { name: 'John', address: 'Highway 71'},
+            { name: 'Peter', address: 'Lowstreet 4'},
+            { name: 'Amy', address: 'Apple st 652'},
+            { name: 'Hannah', address: 'Mountain 21'},
+            { name: 'Michael', address: 'Valley 345'},
+            { name: 'Sandy', address: 'Ocean blvd 2'},
+            { name: 'Betty', address: 'Green Grass 1'},
+            { name: 'Richard', address: 'Sky st 331'},
+            { name: 'Susan', address: 'One way 98'},
+            { name: 'Vicky', address: 'Yellow Garden 2'},
+            { name: 'Ben', address: 'Park Lane 38'},
+            { name: 'William', address: 'Central st 954'},
+            { name: 'Chuck', address: 'Main Road 989'},
+            { name: 'Viola', address: 'Sideway 1633'}
+          ];
+          dbo.collection("clicks").insertMany(myobj, function(err, res) {
+            if (err) throw err;
+            console.log("Number of documents inserted: " + res.insertedCount);
+            db.close();
+          });
+        });
+
+        // MongoClient.connect(url, function(err, db) {
+        //     if (err) throw err;
+        //     var dbo = db.db("bla");
+        //     var myobj = [
+        // //     { name: 'John', address: 'Highway 71'},
+        // //     { name: 'Peter', address: 'Lowstreet 4'},
+        // //     { name: 'Amy', address: 'Apple st 652'},
+        // //     { name: 'Hannah', address: 'Mountain 21'},
+        //     {_id: "001", Bird_Name: "Eurasian Collared-Dove"},
+        //     {_id: "002", Bird_Name: "Bald Eagle"},
+        //     {_id: "003", Bird_Name: "Cooper's Hawk"},
+        //     ];
+        //     dbo.collection("birds").insertMany(myobj, function(err, res) {
+        //     if (err) throw err;
+        //     console.log("Number of documents inserted: " + res.insertedCount);
+        //     db.close();
+        //     });
+        // });
+
+        // const databasename = "GFG"; // Database name
+
+        // MongoClient.connect(url).then((client) => {
+
+        // const connect = client.db(databasename);
+        // // Connect to collection
+        // const collection = connect.collection("GFGcollections");
+
+        
+        // collection.find({}).toArray().then((birds) => {
+        //     var ele = document.getElementById('sel');
+        //     for (var i = 0; i < birds.length; i++) {
+        //         // POPULATE SELECT ELEMENT WITH JSON.
+        //         ele.innerHTML = ele.innerHTML +
+        //             '<option value="' + birds[i][_id] + '">' + birds[i][Bird_Name] + '</option>';
+        //     }
+        // });
+        // }).catch((err) => {
+
+        // // Printing the error message
+        // console.log(err.Message);
+        // })
+
+        }
+
+
+        function show(ele) {
+        // GET THE SELECTED VALUE FROM <select> ELEMENT AND SHOW IT.
+        var msg = document.getElementById('msg');
+        msg.innerHTML = 'Selected Bird: <b>' + ele.options[ele.selectedIndex].text + '</b> </br>' +
+            'ID: <b>' + ele.value + '</b>';
+        }
+
+  </script>
+</body>
+
+</html>

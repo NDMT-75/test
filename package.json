@@ -1,0 +1,27 @@
+{
+    "name": "helloWorld",
+    "version": "1.0.0",
+    "main": "main.js",
+    "devDependencies": {
+        "electron": "^13.1.9",
+        "eslint": "^7.2.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-config-prettier": "^7.2.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-prettier": "^3.3.1",
+        "prettier": "^2.2.1"
+    },
+    "scripts": {
+        "lint": "./node_modules/.bin/eslint main.js renderer.js --fix",
+        "pretty": "./node_modules/.bin/prettier --write 'main.js' 'renderer.js'",
+        "start": "electron ."
+    },
+    "dependencies": {
+        "and": "0.0.3",
+        "express": "^4.17.1",
+        "mongodb": "^4.1.1",
+        "realm": "^10.1.3",
+        "realm-web": "^1.3.0",
+        "start": "^5.1.0"
+    }
+}
